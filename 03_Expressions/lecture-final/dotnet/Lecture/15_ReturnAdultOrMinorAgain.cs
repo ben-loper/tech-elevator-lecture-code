@@ -10,19 +10,23 @@ namespace Lecture
     {
 
         /*
-        15. Now, do it again with a different bool opeation.
+        15. Now, do it again with a different bool operation.
         TOPIC: Logical Not
         */
         public string ReturnAdultOrMinorAgain(int number)
         {
-            if (true)
+            string result = "Adult";
+
+            const int ageOfAdult = 18;
+            bool isAdult = number >= ageOfAdult;
+            bool isMinor = !isAdult;
+
+            if (isMinor)
             {
-                return "Adult";
+                result = "Minor";
             }
-            else
-            {
-                return "Minor";
-            }
+
+            return result;
         }
     }
 }

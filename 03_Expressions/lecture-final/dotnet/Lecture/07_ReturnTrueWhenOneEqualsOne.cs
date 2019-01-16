@@ -16,12 +16,14 @@ namespace Lecture
         */
         public bool ReturnTrueWhenOneEqualsOne()
         {
+            bool result = false;
+
             if (1 == 1)
             {
-                return false;
+                result = true;
             }
 
-            return false;
+            return result;
         }
 
     }
