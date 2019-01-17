@@ -15,10 +15,16 @@ namespace Lecture
         */
         public int ReturnSumArray()
         {
+            int result = 0;
+
             int[] arrayToLoopThrough = { 3, 4, 2, 9 };
 
+            for(int i = 0; i < arrayToLoopThrough.Length; i++)
+            {
+                result += arrayToLoopThrough[i];
+            }
 
-            return 0;
+            return result;
         }
     }
 }

@@ -15,7 +15,25 @@ namespace Lecture
         */
         public int FindTheHighestNumber(int[] randomNumbers)
         {
-            return 0;
+            // create variable that holds the highest value
+            int maxValue;
+
+            // initialize our variable to the first position in the array
+            maxValue = randomNumbers[0];
+
+            // loop through every element in the array starting at position 2
+            for (int i = 1; i < randomNumbers.Length; i++)
+            {
+                // check to see if current position is greater than our variable
+                if (randomNumbers[i] > maxValue)
+                {
+                    // if true then set variable to current position value
+                    maxValue = randomNumbers[i];
+                }
+            }
+
+            // return variable
+            return maxValue;
         }
     }
 }
