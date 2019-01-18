@@ -6,6 +6,11 @@ namespace ConsoleInput
     {
         static void Main(string[] args)
         {
+            //int[] values = { 1, 2, 3 };
+            //double average = Avg(values);
+            //Console.WriteLine($"Avg: {average}");
+            //Console.ReadKey();
+
             /////////////////////////
             //1. Ask for a first name
             /////////////////////////
@@ -35,14 +40,21 @@ namespace ConsoleInput
             string message = Console.ReadLine();
 
             Console.WriteLine("Ok, how many times?");
-            //int numberOfTimes = Console.ReadLine(); <-- results in a compile error, why??
-            string input = Console.ReadLine();
-            int numberOfTimesValue = int.Parse(input);
+            //int numberOfTimes = Console.ReadLine(); //<-- results in a compile error, why??
 
+            string input = Console.ReadLine();
+            //try
+            //{
+            int numberOfTimesValue = int.Parse(input);
             for (int i = 0; i < numberOfTimesValue; i++)
             {
                 Console.WriteLine(message);
             }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
 
             /////////////////////////
             //4. Read in a convert the value answer to a boolean
@@ -70,6 +82,28 @@ namespace ConsoleInput
             Console.WriteLine($"You said you only slept {sleepValue}");
 
             Console.ReadKey();
+        }
+
+        public static double Avg(int[] values)
+        {
+            double result = 0;
+
+            int sumValues = Sum(values);
+            result = (double)sumValues / values.Length;
+
+            return result;
+        }
+
+        public static int Sum(int[] values)
+        {
+            int result = 0;
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                result += values[i];
+            }
+
+            return result;
         }
     }
 }
