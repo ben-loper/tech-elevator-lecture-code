@@ -17,7 +17,7 @@ namespace Lecture
         */
         public int[] ReturnNewArray()
         {
-            return null;
+            return new int[10];
         }
 
 

@@ -12,8 +12,14 @@ namespace Variables_And_Datatypes
 		    1. Create a variable to hold an int and call it numberOfExercises.
 			Then set it to 26.
 		    */
+            int numberOfExercises = 26;
+            Console.WriteLine(numberOfExercises);
 
-            //Console.WriteLine(numberOfExercises);
+
+            short bob = 20 / 3;
+
+            Console.WriteLine(bob);
+
 
             /*
             2. Create a variable to hold a double and call it half.
@@ -74,10 +80,15 @@ namespace Variables_And_Datatypes
             12. Create a string that holds your full name.
             */
 
+            string fullName = "Benjamin Loper";
+
             /*
             13. Create a string that holds the word "Hello, " concatenated onto your
             name from above.
             */
+
+            String message = "Hello, " + fullName;
+
 
             /*
             14. Add a " Esquire" onto the end of your full name and save it back to
@@ -91,7 +102,8 @@ namespace Variables_And_Datatypes
             /*
             16. Create a variable to hold "Saw" and add a 2 onto the end of it.
             */
-
+            string myString = "Saw" + 2;
+            Console.WriteLine(myString);
             /*
             17. Add a 0 onto the end of the variable from exercise 16.
             */
@@ -103,6 +115,8 @@ namespace Variables_And_Datatypes
             /*
             19. What is 5.4 divided by 2?
             */
+            double answer = 5.4 / 2;
+            Console.WriteLine(answer);
 
             /* CASTING */
 

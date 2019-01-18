@@ -15,12 +15,15 @@ namespace Lecture
         */
         public bool ReturnTrueFromIf()
         {
+
+            bool result = false;
+
             if (true)
             {
-                return false;
+                result = true;
             }
 
-            return false;
+            return result;
         }
     }
 }
