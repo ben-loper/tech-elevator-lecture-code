@@ -7,6 +7,11 @@ namespace CollectionsLectureNotes
     {
         static void Main(string[] args)
         {
+            //List<string> myArgs = new List<string>();
+            //myArgs.AddRange(args);
+
+            //string[] arrArgs = myArgs.ToArray();
+
             // LIST<T>
             //
             // Lists allow us to hold collections of data. They are declared with a type of data that they hold
@@ -18,6 +23,8 @@ namespace CollectionsLectureNotes
             //
 
             // Creating lists of integers
+
+            int[] numbers = new int[3];
             List<int> numbersList = new List<int>();
             List<int> numbersList2 = new List<int>();
 
@@ -26,6 +33,53 @@ namespace CollectionsLectureNotes
 
 
             /////////////////
+            Animal cat = new Animal();
+            cat.NumArms = 0;
+            cat.NumLegs = 4;
+
+            Animal dog = new Animal();
+            dog.NumLegs = 4;
+
+            if(cat == dog)
+            {
+                Console.WriteLine("Cat and Dog are the same object.");
+            }
+            else
+            {
+                Console.WriteLine("Cat and Dog are not the same object.");
+            }
+
+            if (cat.Equals(dog))
+            {
+                Console.WriteLine("Cat and Dog have the same number of legs.");
+            }
+            else
+            {
+                Console.WriteLine("Cat and Dog do not have the same number of legs");
+            }
+
+            cat = dog;
+
+            if (cat == dog)
+            {
+                Console.WriteLine("Cat and Dog are the same object.");
+            }
+            else
+            {
+                Console.WriteLine("Cat and Dog are not the same object.");
+            }
+
+            if (cat.Equals(dog))
+            {
+                Console.WriteLine("Cat and Dog have the same number of legs.");
+            }
+            else
+            {
+                Console.WriteLine("Cat and Dog do not have the same number of legs");
+            }
+
+            Console.WriteLine(cat);
+            Console.WriteLine(numbers);
             Console.WriteLine(numbersList);
             Console.WriteLine(wordsList);
 
@@ -67,12 +121,14 @@ namespace CollectionsLectureNotes
             /////////////////
 
             int[] numbersArray = { 2000, 20000 };
+            //foreach(int number in numbersArray)
+            //{
+            //    numbersList.Add(number);
+            //}
             numbersList.AddRange(numbersArray);
 
             string[] wordsArray = { "Red", "Yellow" };
             wordsList.AddRange(wordsArray);
-
-
 
             //////////////////
             // ACCESSING BY INDEX
@@ -84,9 +140,8 @@ namespace CollectionsLectureNotes
                 Console.WriteLine($"Index {i} is {numbersList[i]}");
             }
 
-
             ///////////////////
-            // ACCESSING WITH FOR-EACH
+            //ACCESSING WITH FOR - EACH
             ///////////////////
             Console.WriteLine();
             foreach (string word in wordsList)
@@ -129,7 +184,6 @@ namespace CollectionsLectureNotes
 
             Console.WriteLine();
 
-
             // QUEUE <T>
             //
             // Queues are a special type of data structure that follow First-In First-Out (FIFO).
@@ -144,6 +198,11 @@ namespace CollectionsLectureNotes
             /////////////////////
             // PROCESSING ITEMS IN A QUEUE
             /////////////////////
+            foreach (string priority in priorities)
+            {
+                Console.WriteLine("NEXT PRIORITY " + priority);
+            }
+
             while (priorities.Count > 0)
             {
                 string nextPriority = priorities.Dequeue();
@@ -175,7 +234,9 @@ namespace CollectionsLectureNotes
                 Console.WriteLine("PREVIOUS PAGE: " + previousPage);
             }
 
-            Console.ReadLine();
+            
+
+            Console.ReadKey();
 
         }
     }
