@@ -7,6 +7,17 @@ namespace DictionaryCollection
     {
         static void Main(string[] args)
         {
+
+            Dictionary<string, int> mitch = new Dictionary<string, int>();
+
+            mitch.Add("Han", 29);
+
+            Console.WriteLine(mitch["Han"]);
+
+
+            MyHashSetFun();
+
+
             Console.WriteLine("Welcome to the Person / Height Database");
             Console.WriteLine();
 
@@ -28,22 +39,21 @@ namespace DictionaryCollection
                 int height = int.Parse(Console.ReadLine());
 
                 // 2. Check to see if that name is in the dictionary
-                //      bool exists = dictionaryVariable.ContainsKey(key)
+                
+                
                 bool exists = false;    // <-- change this
 
                 if (!exists)
                 {
                     Console.WriteLine($"Adding {name} with new value.");
                     // 3. Put the name and height into the dictionary
-                    //      dictionaryVariable[key] = value;
-                    //      OR dictionaryVariable.Add(key, value);
-
+                   
                 }
                 else
                 {
                     Console.WriteLine($"Overwriting {name} with new value.");
                     // 4. Overwrite the current key with a new value
-                    //      dictionaryVariable[key] = value;
+                  
                 }
 
 
@@ -87,6 +97,19 @@ namespace DictionaryCollection
         {
             // Looping through a dictionary involves using a foreach loop
             // to look at each item, which is a key-value pair
+        }
+
+        public static void MyHashSetFun()
+        {
+            HashSet<string> states = new HashSet<string>();
+
+            states.Add("Ohio");
+            states.Add("Michigan");
+            states.Add("Ohio");
+            states.Add("Michigan");
+
+            Console.WriteLine(states.GetHashCode());
+            Console.ReadKey();
         }
     }
 }
