@@ -1,4 +1,5 @@
 ﻿using System;
+using PaintJob;
 
 namespace ShapeExercise
 {
@@ -6,7 +7,20 @@ namespace ShapeExercise
     {
         static void Main(string[] args)
         {
-          bool keepRunning = true;
+            Wall diningRoomWall = new Wall(10,10, "Dining Room");
+            Console.WriteLine(diningRoomWall);
+
+            var tempArea = diningRoomWall.Area;
+
+            Wall livingRoomWall = new Wall(5, "Living Room");
+            Console.WriteLine(livingRoomWall);
+
+            Wall bedroomRoomWall = new Wall(5, 20, "Bedroom");
+            Console.WriteLine(bedroomRoomWall);
+            bool areEqual = bedroomRoomWall.Equals(diningRoomWall);
+            areEqual = livingRoomWall.Equals(diningRoomWall);
+            
+            bool keepRunning = true;
 
             while (keepRunning)
             {
