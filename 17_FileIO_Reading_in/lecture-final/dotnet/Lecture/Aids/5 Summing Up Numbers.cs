@@ -17,7 +17,10 @@ namespace Lecture.Aids
             // get the full path
             string fullpath = Path.Combine(folder, filename);
 
+            //fullpath = @"C:\VendingData\VendingLog.txt";
+
             int sum = 0;
+
             using (StreamReader sr = new StreamReader(fullpath))
             {
                 // Read until we get to the end of the file
