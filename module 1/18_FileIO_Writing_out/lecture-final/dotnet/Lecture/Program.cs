@@ -12,14 +12,18 @@ namespace Lecture
             //ReadingInFiles.ReadACharacterFile();
             //ReadingCSVFiles.ReadFile();  
             //WritingTextFiles.WritingAFile();
-            //BinaryFileWriter.WritePrimitiveValues(); 
+            BinaryFileWriter.WritePrimitiveValues(); 
             //BinaryFileWriter.ReadPrimitiveValues();
             //BinaryImageManipulator.ReadFileIn();
             //PerformanceDemo.SlowPerformance();
             //PerformanceDemo.FastPerformance();
 
             //Start: This section is super cool!
+<<<<<<< HEAD:18_FileIO_Writing_out/lecture-final/dotnet/Lecture/Program.cs
             Serialization.SerializingXMLData();
+=======
+            //Serialization.SerializingXMLData();
+>>>>>>> 2ea2308d8eaff121197b96212e033a98d8f5ffa7:module 1/18_FileIO_Writing_out/lecture-final/dotnet/Lecture/Program.cs
             //Serialization.SerializingBinaryData();
             //End: This section is super cool!
 
