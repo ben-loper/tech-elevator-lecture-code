@@ -19,8 +19,8 @@ namespace Lecture
             //PerformanceDemo.FastPerformance();
 
             //Start: This section is super cool!
-            //Serialization.SerializingXMLData();
-            Serialization.SerializingBinaryData();
+            Serialization.SerializingXMLData();
+            //Serialization.SerializingBinaryData();
             //End: This section is super cool!
 
             // Students find value in building something useful. 
