@@ -12,7 +12,7 @@ namespace Lecture
             //ReadingInFiles.ReadACharacterFile();
             //ReadingCSVFiles.ReadFile();  
             //WritingTextFiles.WritingAFile();
-            //BinaryFileWriter.WritePrimitiveValues(); 
+            BinaryFileWriter.WritePrimitiveValues(); 
             //BinaryFileWriter.ReadPrimitiveValues();
             //BinaryImageManipulator.ReadFileIn();
             //PerformanceDemo.SlowPerformance();
@@ -20,7 +20,7 @@ namespace Lecture
 
             //Start: This section is super cool!
             //Serialization.SerializingXMLData();
-            Serialization.SerializingBinaryData();
+            //Serialization.SerializingBinaryData();
             //End: This section is super cool!
 
             // Students find value in building something useful. 
