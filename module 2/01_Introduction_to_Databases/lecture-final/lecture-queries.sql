@@ -21,7 +21,7 @@ SELECT * FROM country WHERE indepyear = 1776
 
 
 -- Selecting countries not in Asia
-SELECT name, continent FROM country WHERE continent <> 'Asia';
+SELECT [name], continent FROM country WHERE continent != 'Asia';
 
 
 -- Selecting countries that do not have an independence year
@@ -38,21 +38,30 @@ SELECT * FROM city WHERE population > 5000000;
 
 -- SELECT ... FROM ... WHERE ... AND/OR
 -- Selecting cities in Ohio and Population greater than 400,000
-SELECT * FROM city WHERE district = 'Ohio' AND population > 400000;
+SELECT * FROM city WHERE district = 'Ohio' AND [population] > 400000;
 
 -- Selecting country names on the continent North America or South America
 SELECT name, continent FROM country WHERE continent = 'North America' OR continent = 'South America';
 SELECT name, continent FROM country WHERE continent IN ('North America', 'South America');
 
+Select [name] as 'bob' From country
 
 
 
 -- SELECTING DATA w/arithmetic
 -- Selecting the population, life expectancy, and population per area
 --	note the use of the 'as' keyword
-SELECT name, population, surfacearea, lifeexpectancy, (population / surfacearea) as density 
+SELECT name, population, surfacearea, lifeexpectancy, (population / surfacearea) as 'density'
 FROM country 
 WHERE continent='Asia';
 
 
+SELECT name, continent, population, surfacearea, lifeexpectancy, (population / surfacearea) as 'density'
+FROM country 
+WHERE continent Like 'as%';
+
+--Inclusive
+SELECT name, continent, population, surfacearea, lifeexpectancy, (population / surfacearea) as 'density'
+FROM country 
+WHERE lifeexpectancy Between 37.2 And 39.3
 
