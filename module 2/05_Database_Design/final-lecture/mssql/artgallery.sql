@@ -3,6 +3,11 @@
 --drop table artists;
 --drop table customers;
 
+use master
+Drop Database ArtGallery
+Create Database ArtGallery
+use ArtGallery
+
 BEGIN TRANSACTION;
 
 CREATE TABLE customers
