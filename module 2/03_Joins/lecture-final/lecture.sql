@@ -1,13 +1,15 @@
 -- ********* INNER JOIN ***********
 
 -- Let's find out who made payment 16666:
-SELECT * 
-FROM payment
-WHERE payment_id = 16666
+Select (c.first_name + ' ' + c.last_name) as 'Full Name'
+From customer as c
+Where c.customer_id = (SELECT p.customer_id
+					   FROM payment as p
+					   WHERE payment_id = 16666);
 
 -- Ok, that gives us a customer_id, but not the name. We can use the customer_id to get the name FROM the customer table
-SELECT *
-FROM payment JOIN customer ON payment.customer_id = customer.customer_id
+SELECT (c.first_name + ' ' + c.last_name) as 'Full Name', p.amount
+FROM payment as p JOIN customer as c ON c.customer_id = p.customer_id
 WHERE payment_id = 16666
 
 -- We can see that the * pulls back everything from both tables. We just want everything from payment and then the first and last name of the customer:
@@ -30,11 +32,14 @@ JOIN film ON film.film_id = inventory.film_id
 WHERE payment_id = 16666
 
 -- What if we wanted to know who acted in that film?    
-SELECT film.title, array_agg(actor.first_name || ' ' || actor.last_name) AS actors FROM film
-JOIN film_actor ON film_actor.film_id = film.film_id
-JOIN actor ON actor.actor_id = film_actor.actor_id
-WHERE film.film_id=948
-GROUP BY film.film_id
+SELECT payment.*, customer.first_name, customer.last_name, rental.return_date, film.title, (actor.first_name + ' ' + actor.last_name)
+FROM payment JOIN customer ON payment.customer_id = customer.customer_id
+JOIN rental ON rental.rental_id = payment.rental_id
+JOIN inventory ON inventory.inventory_id = rental.inventory_id
+JOIN film ON film.film_id = inventory.film_id
+Join film_actor On film_actor.film_id = film.film_id
+Join actor On actor.actor_id = film_actor.actor_id
+WHERE payment_id = 16666
 
 -- What if we wanted a list of all the films and their categories ordered by film title
 SELECT f.title, c.name 
