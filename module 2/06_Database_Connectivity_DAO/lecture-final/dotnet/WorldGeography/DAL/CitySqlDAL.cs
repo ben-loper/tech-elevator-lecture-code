@@ -22,7 +22,7 @@ namespace WorldGeography.DAL
             List<City> result = new List<City>();
 
             // define my sql statement
-            string SqlCountryCodeCities = $"SELECT * FROM city WHERE countryCode = '{countryCode}' ORDER BY city.district, city.name;";
+            string SqlCountryCodeCities = $"SELECT * FROM city WHERE countryCode = @CountryCode ORDER BY city.district, city.name;";
 
             // create my connection object
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -32,6 +32,7 @@ namespace WorldGeography.DAL
 
                 // create my command object
                 SqlCommand cmd = new SqlCommand(SqlCountryCodeCities, conn);
+                cmd.Parameters.AddWithValue("@CountryCode", countryCode);
 
                 // execute command
                 SqlDataReader reader = cmd.ExecuteReader();
