@@ -11,7 +11,7 @@ namespace WorldGeography.DAL
     public class CountrySqlDAL 
     {
         private string connectionString;
-        private const string SQL_GetContinentNames = "SELECT DISTINCT continent FROM country";
+        
 
         //Constructor
         public CountrySqlDAL(string databaseconnectionString)
@@ -32,9 +32,10 @@ namespace WorldGeography.DAL
                 {
                     connection.Open();
 
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.CommandText = SQL_GetContinentNames;
-                    cmd.Connection = connection;
+                    const string SQL_GetContinentNames = "SELECT DISTINCT continent FROM country";
+                    SqlCommand cmd = new SqlCommand(SQL_GetContinentNames, connection);
+                    //cmd.CommandText = SQL_GetContinentNames;
+                    //cmd.Connection = connection;
 
                     // Execute the query to the database
                     SqlDataReader reader = cmd.ExecuteReader();
