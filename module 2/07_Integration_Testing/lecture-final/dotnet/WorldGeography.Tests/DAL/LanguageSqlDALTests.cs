@@ -15,7 +15,7 @@ namespace WorldGeography.DAL.Tests
     public class LanguageSqlDALTests
     {
         private TransactionScope tran;
-        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=World;User ID=te_student;Password=sqlserver1";
+        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=World;Integrated Security=true";
 
 
         /*
