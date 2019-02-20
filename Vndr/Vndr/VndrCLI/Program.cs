@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using System.Data;
 using System.IO;
 using VendingService;
 using VendingService.Database;
 using VendingService.File;
+using VendingService.Mock;
 
 namespace VndrCLI
 {
@@ -17,11 +19,14 @@ namespace VndrCLI
             IConfigurationRoot configuration = builder.Build();
 
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            var db = new VendingDBService(connectionString);
+            
+            //var db = new VendingDBService(connectionString);
+            var db = new MockVendingDBService();
+
             var log = new LogFileService();
             VendingMachine vm = new VendingMachine(db, log);
             VndrCLI cli = new VndrCLI(vm);
-            cli.Run();
+            cli.Run();                        
         }
     }
 }

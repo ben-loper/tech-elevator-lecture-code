@@ -15,7 +15,7 @@ namespace WorldGeography.DAL.Tests
     public class CitySqlDALTests
     {
         private TransactionScope tran;      //<-- used to begin a transaction during initialize and rollback during cleanup
-        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=World;User ID=te_student;Password=sqlserver1";
+        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=World;Integrated Security=true";
         private int cityId;                 //<-- used to hold the city id of the row created for our test
 
 

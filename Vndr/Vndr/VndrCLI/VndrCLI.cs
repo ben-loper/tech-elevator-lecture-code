@@ -20,9 +20,9 @@ namespace VndrCLI
         private const string Option_ReturnToPreviousMenu = "r";
         private const string Option_Quit = "q";
 
-        private VendingMachine _vm;
+        private IVendingMachine _vm;
 
-        public VndrCLI(VendingMachine vm)
+        public VndrCLI(IVendingMachine vm)
         {
             _vm = vm;
         }
