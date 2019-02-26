@@ -1,16 +1,30 @@
 html * {
   margin: 0;
   padding: 0;
+  border: 1px solid red;
+  margin: 3px;
 }
-#slug_1 {
+
+div {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.bob {
+  border-color: black;
+  margin: 3px;
+}
+
+/* #slug_1 {
   background-color: #ECA008;
-  padding: 50px;
-  margin: 0;
-  border: 3px solid black;
+  padding: 100px;
+  margin-bottom: 100px;
+  border-right: 3px solid black;
 }
 #slug_2 {
   background-color: #ECA008;
   padding: 0px;
   margin: 50px;
-  border: 3px solid black;
-}
+  border-bottom: 13px double black;
+} */
