@@ -31,7 +31,7 @@ namespace TechElevator.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Food}/{action=Index}/{creature?}/{meal?}");
             });
 
         }

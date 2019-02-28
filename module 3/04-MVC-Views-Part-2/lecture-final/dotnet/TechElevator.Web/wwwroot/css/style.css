@@ -9,3 +9,15 @@
         background-color: #ccc;
         margin: 5px;
     }
+
+.creature {
+    color: darkviolet;
+}
+
+.meal {
+    color: forestgreen;
+}
+
+.food {
+    background-color: bisque;
+}

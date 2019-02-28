@@ -1,0 +1,27 @@
+﻿@using TechElevator.Web.Models
+@model EatDetailViewModel
+
+@{
+    ViewData["Title"] = "Eat";
+    //var eatViewModel = (EatDetailViewModel)ViewData["EatInfo"];
+}
+
+<h1>Food Items</h1>
+<ul>
+    @foreach (var item in Model.FoodItems)
+    {
+        <li class="food">@item</li>
+    }
+</ul>
+<div>Creature: <span class="creature">@Model.Creature</span></div>
+<div>Meal: <span class="meal">@Model.Meal</span></div>
+
+@*<h1>Food Items</h1>
+<ul>
+    @foreach (var item in eatViewModel.FoodItems)
+    {
+        <li class="food">@item</li>
+    }
+</ul>
+<div>Creature: <span class="creature">@eatViewModel.Creature</span></div>
+<div>Meal: <span class="meal">@eatViewModel.Meal</span></div>*@
