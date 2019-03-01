@@ -35,5 +35,70 @@ namespace TechElevator.Web.DAL
         {
             return films.FirstOrDefault(film => film.Id.ToLower() == id.ToLower());
         }
+
+        public List<string> GetFoodInfo(string creature, string meal)
+        {
+            List<string> result = new List<string>();
+
+            if(creature.ToLower() == "wookie")
+            {
+                if(meal.ToLower() == "breakfast")
+                {
+                    result.Add("eggs");
+                    result.Add("bacon");
+                    result.Add("orange juice");
+                }
+                else if (meal.ToLower() == "lunch")
+                {
+                    result.Add("babies");
+                    result.Add("bacon");
+                    result.Add("v8");
+                }
+                else if (meal.ToLower() == "dinner")
+                {
+                    result.Add("unlucky adventurer");
+                    result.Add("ale");
+                }
+            }
+            else if (creature.ToLower() == "jawa")
+            {
+                if (meal.ToLower() == "breakfast")
+                {
+                    result.Add("bolts");
+                    result.Add("glue");
+                    result.Add("blinker fluid");
+                }
+                else if (meal.ToLower() == "lunch")
+                {
+                    result.Add("tide pods");
+                    result.Add("meth");
+                    result.Add("blood");
+                }
+                else if (meal.ToLower() == "dinner")
+                {
+                    result.Add("sand");
+                }
+            }
+            else if (creature.ToLower() == "ewok")
+            {
+                if (meal.ToLower() == "breakfast")
+                {
+                    result.Add("leaves");
+                    result.Add("storm troopers");
+                    result.Add("spring water");
+                }
+                else if (meal.ToLower() == "lunch")
+                {
+                    result.Add("crank");
+                    result.Add("sugar water");
+                }
+                else if (meal.ToLower() == "dinner")
+                {
+                    result.Add("AT Walker");
+                }
+            }
+
+            return result;
+        }
     }
 }
