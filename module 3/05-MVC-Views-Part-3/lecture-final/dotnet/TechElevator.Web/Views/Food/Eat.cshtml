@@ -1,0 +1,36 @@
+﻿@using TechElevator.Web.Models
+@model EatDetailViewModel
+
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //var eatViewModel = (EatDetailViewModel)ViewData["EatInfo"];
+}
+
+@section Title {
+    Eat Results
+}
+
+@section StyleSheet {
+    <link href="~/css/Eat.css" rel="stylesheet" />
+}
+
+    <h1>Food Items</h1>
+    <ul>
+        @foreach (var item in Model.FoodItems)
+        {
+            <li class="food">@item</li>
+        }
+    </ul>
+    <div>Creature: <span class="creature">@Model.Creature</span></div>
+    <div>Meal: <span class="meal">@Model.Meal</span></div>
+
+    @*<h1>Food Items</h1>
+        <ul>
+            @foreach (var item in eatViewModel.FoodItems)
+            {
+                <li class="food">@item</li>
+            }
+        </ul>
+        <div>Creature: <span class="creature">@eatViewModel.Creature</span></div>
+        <div>Meal: <span class="meal">@eatViewModel.Meal</span></div>*@
