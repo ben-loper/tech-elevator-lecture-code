@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@RenderSection("Title", true)</title>
+    <link href="~/css/FoodStyle.css" rel="stylesheet" />
+    @RenderSection("StyleSheet", false)
+</head>
+<body>
+    <header>HEADER</header>
+    <main>@RenderBody()</main>
+    <aside>ASIDE</aside>
+    <footer>FOOTER</footer>
+</body>
+</html>

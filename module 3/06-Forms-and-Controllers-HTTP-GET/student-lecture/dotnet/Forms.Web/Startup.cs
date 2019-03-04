@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Forms.Web.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using VendingService;
-using VendingService.Database;
-using VendingService.Interfaces;
-using VendingService.Mock;
 
-namespace VndrMVC
+namespace Forms.Web
 {
     public class Startup
     {
@@ -35,15 +30,12 @@ namespace VndrMVC
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
-            var db = new VendingDBService(connectionString);
-            //var db = new MockVendingDBService();
-            var log = new LogDBService(connectionString);
-                       
-            services.AddSingleton<IVendingMachine>(m => new VendingMachine(db, log));
+            string connectionString = Configuration.GetConnectionString("Default");
+
+            services.AddScoped<ICityDAL, CitySqlDal>(d => new CitySqlDal(connectionString));
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,13 +45,11 @@ namespace VndrMVC
             {
                 app.UseDeveloperExceptionPage();
             }
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //    app.UseHsts();
-            //}
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
@@ -67,7 +57,7 @@ namespace VndrMVC
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=User}/{action=Login}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

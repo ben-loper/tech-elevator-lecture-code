@@ -1,0 +1,22 @@
+﻿@model List<CreatureViewModel>
+
+@section StyleSheet {
+    <link href="~/css/EatIndex.css" rel="stylesheet" />
+}
+
+@section Title {
+    Eat Index
+}
+
+@foreach (var creature in Model)
+{
+    <div>
+        <div>@creature.Name</div>
+        <img style="width:@creature.ImageSize" src="@creature.ImageUrl" />
+        <ul>
+            <li><a asp-controller="Food" asp-action="Eat" asp-route-creature="@creature.Name" asp-route-meal="breakfast">Breakfast</a></li>
+            <li><a asp-controller="Food" asp-action="Eat" asp-route-creature="@creature.Name" asp-route-meal="lunch">Lunch</a></li>
+            <li><a asp-controller="Food" asp-action="Eat" asp-route-creature="@creature.Name" asp-route-meal="dinner">Dinner</a></li>
+        </ul>
+    </div>
+}
