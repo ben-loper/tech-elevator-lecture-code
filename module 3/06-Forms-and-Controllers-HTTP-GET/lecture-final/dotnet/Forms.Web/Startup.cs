@@ -32,7 +32,6 @@ namespace Forms.Web
             });
 
             string connectionString = Configuration.GetConnectionString("Default");
-
             services.AddScoped<ICityDAL, CitySqlDal>(d => new CitySqlDal(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

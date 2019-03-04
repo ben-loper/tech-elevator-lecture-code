@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using VendingService;
 using VendingService.Database;
 using VendingService.Interfaces;
+using VendingService.Mock;
 
 namespace VndrMVC
 {
@@ -39,8 +40,9 @@ namespace VndrMVC
 
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             var db = new VendingDBService(connectionString);
+            //var db = new MockVendingDBService();
             var log = new LogDBService(connectionString);
-            
+                       
             services.AddSingleton<IVendingMachine>(m => new VendingMachine(db, log));
         }
 

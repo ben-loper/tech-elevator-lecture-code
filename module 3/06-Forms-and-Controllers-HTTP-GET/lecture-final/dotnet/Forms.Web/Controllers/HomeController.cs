@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Forms.Web.Models;
 using Forms.Web.DAL;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Forms.Web.Controllers
 {
@@ -33,8 +34,15 @@ namespace Forms.Web.Controllers
         /// <returns></returns>
         public IActionResult Search()
         {
+            CitySearchModel model = new CitySearchModel();
+            var countries = cityDAL.GetCountries();
+            foreach(var country in countries)
+            {
+                model.Countries.Add(new SelectListItem(country.Name, country.Code));
+            }
+
             // Display a search page
-            return View();
+            return View(model);
         }
         
         /// <summary>

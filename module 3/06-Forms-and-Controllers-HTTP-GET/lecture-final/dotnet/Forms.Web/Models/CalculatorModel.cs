@@ -28,6 +28,12 @@ namespace Forms.Web.Models
         public string EndingUnit { get; set; }
 
         /// <summary>
+        /// The unit to convert to.
+        /// </summary>
+        [Display(Name = "Meal")]
+        public string Meal { get; set; }
+
+        /// <summary>
         /// Calculators a converted value assuming a Starting Unit and Ending Unit
         /// </summary>
         /// <returns></returns>

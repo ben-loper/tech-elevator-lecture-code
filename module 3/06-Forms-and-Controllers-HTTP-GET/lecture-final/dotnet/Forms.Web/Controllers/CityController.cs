@@ -38,6 +38,7 @@ namespace Forms.Web.Controllers
         [HttpGet]        
         public IActionResult New()
         {            
+            
             // Return the empty view
             return View();
         }

@@ -9,8 +9,8 @@
 <form asp-action="results" asp-controller="home" method="get">
 
     <label asp-for="CountryCode"></label>
-    <input asp-for="CountryCode" placeholder="e.g. USA" />
-    
+    <select asp-for="CountryCode" asp-items="Model.Countries"></select>
+
     <label asp-for="District"></label>
     <input asp-for="District" />
 

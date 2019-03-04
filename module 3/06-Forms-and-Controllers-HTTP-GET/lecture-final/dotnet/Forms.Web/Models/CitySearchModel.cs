@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,5 +26,10 @@ namespace Forms.Web.Models
         /// The results that matched the criteria.
         /// </summary>
         public IList<City> Results { get; set; }
+
+        /// <summary>
+        /// Provides the list of Units for conversion.
+        /// </summary>
+        public List<SelectListItem> Countries = new List<SelectListItem>();
     }
 }

@@ -140,6 +140,35 @@ namespace Forms.Web.DAL
         }
 
         /// <summary>
+        /// Returns all of the country codes.
+        /// </summary>
+        /// <returns></returns>
+        public IList<CountryItem> GetCountries()
+        {
+            List<CountryItem> countries = new List<CountryItem>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string sql = "SELECT code, name FROM country;";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    CountryItem item = new CountryItem();
+                    item.Code = Convert.ToString(reader["code"]);
+                    item.Name = Convert.ToString(reader["name"]);
+                    countries.Add(item);
+                }
+            }
+
+            return countries;
+        }
+
+        /// <summary>
         /// Adds a city to the database.
         /// </summary>
         /// <param name="city"></param>

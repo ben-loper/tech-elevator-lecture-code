@@ -12,5 +12,6 @@ namespace Forms.Web.DAL
         IList<City> GetCities(string countryCode, string district);
         IList<string> GetCountryCodes();
         void AddCity(City city);
+        IList<CountryItem> GetCountries();
     }
 }
