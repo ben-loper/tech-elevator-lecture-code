@@ -97,24 +97,20 @@ namespace Lecture.Web.DAL
         }
 
         public void AddCity(City city)
-        {
-            try
+        {            
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO city VALUES (@name, @countryCode, @district, @population);", conn);
-                    cmd.Parameters.AddWithValue("@name", city.Name);
-                    cmd.Parameters.AddWithValue("@countryCode", city.CountryCode);
-                    cmd.Parameters.AddWithValue("@district", city.District);
-                    cmd.Parameters.AddWithValue("@population", city.Population);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO city VALUES (@name, @countryCode, @district, @population);", conn);
+                cmd.Parameters.AddWithValue("@name", city.Name);
+                cmd.Parameters.AddWithValue("@countryCode", city.CountryCode);
+                cmd.Parameters.AddWithValue("@district", city.District);
+                cmd.Parameters.AddWithValue("@population", city.Population);
 
-                    cmd.ExecuteNonQuery();
+                if(cmd.ExecuteNonQuery() == 0)
+                {
+                    throw new Exception("Failed to insert city.");
                 }
-            }
-            catch(SqlException ex)
-            {
-                throw;
             }
         }
 

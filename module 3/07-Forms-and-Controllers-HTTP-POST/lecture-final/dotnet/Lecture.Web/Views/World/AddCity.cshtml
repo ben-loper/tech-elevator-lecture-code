@@ -1,0 +1,23 @@
+﻿@model City
+
+    <h2>AddCity</h2>
+
+    @* // Step 1 - Add Index action for intial page load *@
+    <form asp-controller="world" asp-action="addcity" method="post">
+
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+
+        <label asp-for="CountryCode"></label>
+        <input asp-for="CountryCode" />
+
+        <label asp-for="District"></label>
+        <input asp-for="District" />
+
+        <label asp-for="Population"></label>
+        <input asp-for="Population" />
+
+
+        <input type="submit" value="Add" />
+    </form>
+

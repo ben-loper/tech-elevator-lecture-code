@@ -1,13 +1,7 @@
-﻿@*7. Bind the view to a model*@
-@model IList<Country>
+﻿@model IList<Country>
 
-@* 2. Create the empty Index view to be used by the WorldController/Index action. *@
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h2>Index</h2>
-
+@*Step 2 - Add Index action for intial page load*@
+<partial name="_SearchBarView" />
 
 <table class="table table-striped">
     <thead>

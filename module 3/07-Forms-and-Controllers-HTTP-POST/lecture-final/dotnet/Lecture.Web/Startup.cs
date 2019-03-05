@@ -32,13 +32,14 @@ namespace Lecture.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-            // CONFIGURE THE APPLICATION DEPENDENCIES
-            services.AddTransient<ICountryDAO>(j => new CountrySqlDAO(@"Data Source=.\sqlexpress;Initial Catalog=world;Integrated Security=true;"));
-            services.AddTransient<ICityDAO>(j => new CitySqlDAO(@"Data Source=.\sqlexpress;Initial Catalog=world;Integrated Security=true;"));
-
-
+            // DI: Step 1 - Add our interfaces to the services collection
+            string connectionString = Configuration.GetConnectionString("Default");
+            services.AddScoped<ICountryDAO, CountrySqlDAO>(d => new CountrySqlDAO(connectionString));
+            services.AddScoped<ICityDAO, CitySqlDAO>(d => new CitySqlDAO(connectionString));
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //services.AddMemoryCache();
+            //services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,8 +63,10 @@ namespace Lecture.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=World}/{action=Index}/{id?}");
             });
+
+            
         }
     }
 }
