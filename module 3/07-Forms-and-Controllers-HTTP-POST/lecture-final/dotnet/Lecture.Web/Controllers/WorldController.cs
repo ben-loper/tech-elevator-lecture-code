@@ -29,6 +29,7 @@ namespace Lecture.Web.Controllers
             return View(countries);
         }
 
+        // Step 3 - Add AddCity get action for add city input controls
         [HttpGet]
         public IActionResult AddCity()
         {
@@ -36,26 +37,33 @@ namespace Lecture.Web.Controllers
             return View(city);
         }
 
+        // Step 5 - Add AddCity post action for add city submit from Form
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddCity(City city)
         {
+            IActionResult result = null;
             try
             {
+                // Step 6 - Save new city information to database
                 _cityDao.AddCity(city);
+
+                //CityViewModel vm = new CityViewModel();
+                //vm.CountryCode = city.CountryCode;
+                //vm.District = city.District;
+
+                //TempData["CityData"] = vm;
+
+                // Step 7 - Redirect the browser to the world/confirmation action to prevent re-submition
+                result = RedirectToAction("Confirmation", "World", new { CountryCode = city.CountryCode, District = city.District });
             }
             catch(Exception)
             {
-                return View("AddCity");
+                // If we failed to add the city to the DAO then return to the form page
+                result = View("AddCity");
             }
 
-            CityViewModel vm = new CityViewModel();
-            vm.CountryCode = city.CountryCode;
-            vm.District = city.District;
-
-            //TempData["CityData"] = vm;
-
-            return RedirectToAction("Confirmation", "World", new { CountryCode = city.CountryCode, District = city.District });
+            return result;
         }
 
         [HttpGet]
