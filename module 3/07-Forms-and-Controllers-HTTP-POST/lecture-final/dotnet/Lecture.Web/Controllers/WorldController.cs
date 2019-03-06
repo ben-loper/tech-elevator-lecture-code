@@ -3,44 +3,80 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lecture.Web.DAL;
-
+using Lecture.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lecture.Web.Controllers
 {
     public class WorldController : Controller
     {
-        private ICountryDAO countryDAL;
-        private ICityDAO cityDAL;
+        private ICountryDAO _countryDao;
+        private ICityDAO _cityDao;
 
-        public WorldController(ICountryDAO countryDAL, ICityDAO cityDAL)
+        // DI: Step 2 - Add any necessary interfaces as parameters only if needed in this controller
+        public WorldController(ICountryDAO countryDao, ICityDAO cityDao)
         {
-            this.countryDAL = countryDAL;
-            this.cityDAL = cityDAL;
+            _countryDao = countryDao;
+            _cityDao = cityDao;
         }
 
-
-        // 1. Create WorldController / Index action so that user can 
-        //      navigate to /world OR /world/index
+        // Step 1 - Add Index action for intial page load
+        [HttpGet]
         public IActionResult Index()
         {
-            //5. Call the DAL 
-            //var countryDAL = new CountrySqlDAL(@"Data Source=.\sqlexpress;Initial Catalog=world;Integrated Security=true;");            
-            var countries = countryDAL.GetCountries(); 
+            var countries = _countryDao.GetCountries(); 
 
-            //6. Pass the model into the view
             return View(countries);
         }
 
-        // 8. Create an action CitiesByCountry so that the user can
-        // navigate to world/citiesbycountry
+        // Step 3 - Add AddCity get action for add city input controls
+        [HttpGet]
+        public IActionResult AddCity()
+        {
+            City city = new City();
+            return View(city);
+        }
+
+        // Step 5 - Add AddCity post action for add city submit from Form
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddCity(City city)
+        {
+            IActionResult result = null;
+            try
+            {
+                // Step 6 - Save new city information to database
+                _cityDao.AddCity(city);
+
+                //CityViewModel vm = new CityViewModel();
+                //vm.CountryCode = city.CountryCode;
+                //vm.District = city.District;
+
+                //TempData["CityData"] = vm;
+
+                // Step 7 - Redirect the browser to the world/confirmation action to prevent re-submition
+                result = RedirectToAction("Confirmation", "World", new { CountryCode = city.CountryCode, District = city.District });
+            }
+            catch(Exception)
+            {
+                // If we failed to add the city to the DAO then return to the form page
+                result = View("AddCity");
+            }
+
+            return result;
+        }
+
+        [HttpGet]
+        public IActionResult Confirmation(CityViewModel info)
+        {
+            //var info = TempData["CityData"];
+            return View(info);
+        }
+
         public IActionResult CitiesByCountry(string code)
         {
-            //10. Call the DAL
-            //var cityDAL = new CitySqlDAL(@"Data Source=.\sqlexpress;Initial Catalog=world;Integrated Security=true;");
-            var cities = cityDAL.GetCities(code);
+            var cities = _cityDao.GetCities(code);
 
-            //11. Pass the model into the view
             return View(cities);
         }
     }

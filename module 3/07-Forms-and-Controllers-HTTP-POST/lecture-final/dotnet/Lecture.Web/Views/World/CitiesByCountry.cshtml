@@ -1,10 +1,7 @@
 ﻿@*12. Bind to a list of city *@
 @model IList<City>
-@{
-    ViewData["Title"] = "CitiesByCountry";
-}
 
-<h2>Cities By Country</h2>
+<partial name="_SearchBarView" />
 
 <table class="table table-striped">
     <thead>
