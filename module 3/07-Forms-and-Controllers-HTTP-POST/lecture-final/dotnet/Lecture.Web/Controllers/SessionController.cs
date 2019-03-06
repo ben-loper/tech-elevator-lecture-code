@@ -69,6 +69,10 @@ namespace SessionControllerData
 //        options.IdleTimeout = TimeSpan.FromMinutes(20);
 //        options.Cookie.HttpOnly = true;
 //    });
+
+//    services.AddMvc()
+//        .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+//        .AddSessionStateTempDataProvider();
 //}
 
 //public void Configure(IApplicationBuilder app, IHostingEnvironment env)

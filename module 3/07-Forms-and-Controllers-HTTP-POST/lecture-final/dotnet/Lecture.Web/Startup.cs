@@ -45,7 +45,9 @@ namespace Lecture.Web
             services.AddScoped<ICountryDAO, CountrySqlDAO>(d => new CountrySqlDAO(connectionString));
             services.AddScoped<ICityDAO, CitySqlDAO>(d => new CitySqlDAO(connectionString));
             
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddSessionStateTempDataProvider();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
