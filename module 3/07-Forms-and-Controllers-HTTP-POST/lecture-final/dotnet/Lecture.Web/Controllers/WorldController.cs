@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lecture.Web.DAL;
 using Lecture.Web.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SessionControllerData;
 
 namespace Lecture.Web.Controllers
 {
-    public class WorldController : Controller
+    public class WorldController : SessionController
     {
         private ICountryDAO _countryDao;
         private ICityDAO _cityDao;
@@ -48,14 +50,14 @@ namespace Lecture.Web.Controllers
                 // Step 6 - Save new city information to database
                 _cityDao.AddCity(city);
 
-                //CityViewModel vm = new CityViewModel();
-                //vm.CountryCode = city.CountryCode;
-                //vm.District = city.District;
+                CityViewModel vm = new CityViewModel();
+                vm.CountryCode = city.CountryCode;
+                vm.District = city.District;
 
-                //TempData["CityData"] = vm;
+                SetTempData("CityData", vm);
 
                 // Step 7 - Redirect the browser to the world/confirmation action to prevent re-submition
-                result = RedirectToAction("Confirmation", "World", new { CountryCode = city.CountryCode, District = city.District });
+                result = RedirectToAction("Confirmation", "World"/*, new { CountryCode = city.CountryCode, District = city.District }*/);
             }
             catch(Exception)
             {
@@ -67,9 +69,9 @@ namespace Lecture.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Confirmation(CityViewModel info)
+        public IActionResult Confirmation(/*CityViewModel info*/)
         {
-            //var info = TempData["CityData"];
+            var info = GetTempData<CityViewModel>("CityData");
             return View(info);
         }
 

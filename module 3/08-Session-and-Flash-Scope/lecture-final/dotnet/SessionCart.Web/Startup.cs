@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Lecture.Web.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SessionCart.Web.DAL;
 
-namespace Lecture.Web
+namespace SessionCart.Web
 {
     public class Startup
     {
@@ -28,7 +27,7 @@ namespace Lecture.Web
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                //options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -39,12 +38,8 @@ namespace Lecture.Web
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.Cookie.HttpOnly = true;
             });
+            services.AddTransient<IProductDAO, FakeProductDAO>(); //<-- dependency injection
 
-            // DI: Step 1 - Add our interfaces to the services collection
-            string connectionString = Configuration.GetConnectionString("Default");
-            services.AddScoped<ICountryDAO, CountrySqlDAO>(d => new CountrySqlDAO(connectionString));
-            services.AddScoped<ICityDAO, CitySqlDAO>(d => new CitySqlDAO(connectionString));
-            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -58,10 +53,8 @@ namespace Lecture.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                //app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
@@ -69,8 +62,8 @@ namespace Lecture.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=World}/{action=Index}/{id?}");
-            });            
+                    template: "{controller=Store}/{action=Index}/{id?}");
+            });
         }
     }
 }
