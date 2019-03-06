@@ -20,8 +20,8 @@ namespace VndrCLI
 
             string connectionString = configuration.GetConnectionString("DefaultConnection");
             
-            //var db = new VendingDBService(connectionString);
-            var db = new MockVendingDBService();
+            var db = new VendingDBService(connectionString);
+            //var db = new MockVendingDBService();
 
             var log = new LogFileService();
             VendingMachine vm = new VendingMachine(db, log);
