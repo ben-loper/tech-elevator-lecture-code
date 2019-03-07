@@ -1,0 +1,38 @@
+﻿@model City
+
+<h2>AddCity</h2>
+
+@*Step 4 - Add AddCity View for add city input controls page*@
+<form asp-controller="world" asp-action="addcity" method="post">
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span class="validation" asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="CountryCode"></label>
+        <input asp-for="CountryCode" />
+        <span class="validation" asp-validation-for="CountryCode"></span>
+    </div>
+    <div>
+        <label asp-for="District"></label>
+        <input asp-for="District" />
+        <span class="validation" asp-validation-for="District"></span>
+    </div>
+    <div>
+        <label asp-for="Population"></label>
+        <input asp-for="Population" />
+        <span class="validation" asp-validation-for="Population"></span>
+    </div>
+    <div>
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" />
+        <span class="validation" asp-validation-for="Phone"></span>
+    </div>
+    <div>
+        @Html.ValidationMessage("invalid-country-code", new { @class = "validation" })
+    </div>
+    <input type="submit" value="Add" />
+</form>
