@@ -1,0 +1,26 @@
+﻿@model IList<Country>
+
+@*Step 2 - Add Index View for intial page load*@
+<partial name="_SearchBarView" />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Code</td>
+            <td>Name</td>
+            <td>Continent</td>
+            <td>Head of State</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var country in Model)
+        {
+            <tr>
+                <td><a asp-controller="world" asp-action="citiesbycountry" asp-route-code="@country.Code">@country.Code</a></td>
+                <td>@country.Name</td>
+                <td>@country.Continent</td>
+                <td>@country.HeadOfState</td>
+            </tr>
+        }
+    </tbody>
+</table> 

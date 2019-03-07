@@ -45,24 +45,34 @@ namespace Lecture.Web.Controllers
         public IActionResult AddCity(City city)
         {
             IActionResult result = null;
-            try
+
+            // Are there errors
+            if (!ModelState.IsValid)
             {
-                // Step 6 - Save new city information to database
-                _cityDao.AddCity(city);
-
-                CityViewModel vm = new CityViewModel();
-                vm.CountryCode = city.CountryCode;
-                vm.District = city.District;
-
-                SetTempData("CityData", vm);
-
-                // Step 7 - Redirect the browser to the world/confirmation action to prevent re-submition
-                result = RedirectToAction("Confirmation", "World"/*, new { CountryCode = city.CountryCode, District = city.District }*/);
-            }
-            catch(Exception)
-            {
-                // If we failed to add the city to the DAO then return to the form page
+                // Return the new view again
                 result = View("AddCity");
+            }
+            else
+            {
+                try
+                {
+                    // Step 6 - Save new city information to database
+                    _cityDao.AddCity(city);
+
+                    CityViewModel vm = new CityViewModel();
+                    vm.CountryCode = city.CountryCode;
+                    vm.District = city.District;
+
+                    SetTempData("CityData", vm);
+
+                    // Step 7 - Redirect the browser to the world/confirmation action to prevent re-submition
+                    result = RedirectToAction("Confirmation", "World"/*, new { CountryCode = city.CountryCode, District = city.District }*/);
+                }
+                catch (Exception)
+                {
+                    // If we failed to add the city to the DAO then return to the form page
+                    result = View("AddCity");
+                }
             }
 
             return result;

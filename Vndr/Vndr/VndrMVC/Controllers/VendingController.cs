@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using VendingService;
 
 namespace VndrMVC.Controllers
@@ -6,7 +7,6 @@ namespace VndrMVC.Controllers
     public class VendingController : BaseController
     {
         IVendingMachine _vm = null;
-
         public VendingController(IVendingMachine vm) : base(vm)
         {
             _vm = vm;
