@@ -31,8 +31,7 @@
             <td>
                 <form asp-action="AddToCart" asp-controller="Store" method="post">
                     @* Create a hidden input field to store the product id *@
-                    <input type="hidden" asp-for="@product.Id" />
-                    <input type="hidden" name="quantity" value="10" />
+                    <input type="hidden" name="id" value="@product.Id" />
                     <button>Add to Cart</button>
                 </form>
             </td>

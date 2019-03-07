@@ -51,12 +51,12 @@ namespace SessionCart.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart(Product product, int quantity)
+        public ActionResult AddToCart(int id)
         {
             // Add whichever Product productId represents to the shopping cart
-
+            
             //1.  Get the Product associated with id
-            product = dao.GetProduct(product.Id);
+            Product product = dao.GetProduct(id);
 
             //2.  Add Product, qty 1 to our active shopping cart
             ShoppingCart cart = GetActiveShoppingCart();
@@ -102,7 +102,7 @@ namespace SessionCart.Web.Controllers
             if (GetSessionData<ShoppingCart>("ShoppingCart") == null)
             {
                 cart = new ShoppingCart();
-                SaveActiveShoppingCart(cart);                
+                SaveActiveShoppingCart(cart);
             }
             else
             {
@@ -116,7 +116,7 @@ namespace SessionCart.Web.Controllers
 
         private void SaveActiveShoppingCart(ShoppingCart cart)
         {
-            SetSessionData<ShoppingCart>("ShoppingCart", cart);        // <-- saves the shopping cart into session
+            SetSessionData("ShoppingCart", cart);        // <-- saves the shopping cart into session
         }
     }
 }
