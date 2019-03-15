@@ -6,6 +6,10 @@
  * @returns {number} 1
  */
 
+function turnOn(){
+  return true;
+}
+
 /**
  * Create a function called returnsName.
  *
@@ -14,6 +18,10 @@
  * @returns {string} your name
  */
 
+function returnsName(){
+  return "Ben";
+}
+
 /**
  * Create a function called returnGivenParameter that takes a
  * single parameter and then returns it.
@@ -21,6 +29,10 @@
  * @param {any} thing any value
  * @returns {any} the parameter that we were given
  */
+
+ function returnGivenParameter(variable){
+    return variable;
+ }
 
 /**
  * Now create a function called takeOptionalParameter
@@ -32,6 +44,9 @@
  * @returns {any} the parameter given, or 0 if none is given
  */
 
+ function takeOptionalParameter(x = 0){
+   return x;
+ }
 /**
  * Write an anonymous function in the filter that will
  * remove all numbers that are double digits.
@@ -44,10 +59,14 @@
  * @returns {number[]} the filtered array
  */
 function filterArrayToOnlySingleDigitNumbers(arrayToFilter) {
-  return arrayToFilter.filter(
-    // WRITE CODE HERE
-  );
-}
+  
+  return arrayToFilter.filter( (number) => {
+      
+    return (number < -99 || number > -10) && number < 10 || (number >= 99);
+    
+  })
+};
+
 
 /**
  * Write an anonymous function in the map that will double each element.
@@ -60,9 +79,11 @@ function filterArrayToOnlySingleDigitNumbers(arrayToFilter) {
  * @returns {number[]} a array that has each number doubled
  */
 function mapArrayToDoubleAllNumbers(arrayToDouble) {
-  return arrayToDouble.map(
-    // WRITE CODE HERE
-  );
+  return arrayToDouble.map( number => {
+
+    return number * 2;
+
+  });
 }
 
 /**
@@ -77,9 +98,12 @@ function mapArrayToDoubleAllNumbers(arrayToDouble) {
  * @returns {number} the product of the array
  */
 function reduceArrayToFindProduct(arrayToMultiply) {
-  return arrayToMultiply.reduce(
-    // WRITE CODE HERE
-  );
+  
+  return arrayToMultiply.reduce( (previousResult, number) => {
+
+    return previousResult * number;
+  
+  }, 1);
 }
 
 /**
@@ -90,9 +114,11 @@ function reduceArrayToFindProduct(arrayToMultiply) {
  * @returns {string[]} the filtered array
  */
 function filterStringArrayForSon(arrayToFilter) {
-  return arrayToFilter.filter(
-    // WRITE CODE HERE
-  );
+  return arrayToFilter.filter( (word) => {
+  
+    return (word.search("son") >= 0);
+
+  });
 }
 
 /**
@@ -103,9 +129,11 @@ function filterStringArrayForSon(arrayToFilter) {
  * @returns {string[]} names in all upper case
  */
 function makeNamesAllCaps(arrayToCapitalize) {
-  return arrayToCapitalize.map(
-    // WRITE CODE HERE
-  );
+  return arrayToCapitalize.map( (word) => {
+    
+    return word.toUpperCase();
+    
+  });
 }
 
 /*
