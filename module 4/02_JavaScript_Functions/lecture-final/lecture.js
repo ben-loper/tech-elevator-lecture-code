@@ -1,3 +1,25 @@
+
+
+function getFives(element) {
+  return element === 5;
+}
+
+function testMe(elements){
+  let newArr1 = elements.filter((element) => {return element === 4;});
+  //let newArr2 = elements.filter(function(element) {return element === 5;});
+  let newArr2 = elements.filter(getFives);
+  console.log(newArr1);
+  console.log(newArr2);
+}
+
+// let tony = {};
+// tony.thomas = () => {
+//   console.log("I'm hungry");
+// };
+// tony.bob = getFives;
+
+// tony.bob();
+
 /**
  * All named functions will have the function keyword and
  * a name followed by parentheses.
@@ -27,6 +49,12 @@ function printToConsole(value) {
  */
 function multiplyTogether(firstParameter, secondParameter) {
   return firstParameter * secondParameter;
+}
+
+let mike = () => { 
+  if(isNaN(multiplyTogether())) { 
+    console.log("Not a number"); 
+  } 
 }
 
 /**
@@ -110,7 +138,34 @@ function sumAllNumbers(numbersToSum) {
  *   multiples of 3
  */
 function allDivisibleByThree(numbersToFilter) {
+  // let threes = [];
+  // for(let index in numbersToFilter) {
+  //   if(numbersToFilter[index] % 3 === 0) {
+  //     threes.push(numbersToFilter[index]);
+  //   }
+  // }
+  // return threes;
   return numbersToFilter.filter((number) => {
     return number % 3 === 0;
+  });
+}
+
+function doubleMyPleasure(pleasureNumbers) {
+  return pleasureNumbers.map((element)=>{
+    return element * 2;
+  });
+}
+
+function upperCaseMyShiz(shizs) {
+  return shizs.map((element)=>{
+    return element.toUpperCase();
+  });
+}
+
+function allDivisibleByThreeForEach(numbersToFilter) {
+  numbersToFilter.forEach((element)=>{
+    if(element % 3 === 0) {
+      console.log(element);
+    }   
   });
 }
