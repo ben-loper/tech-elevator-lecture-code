@@ -36,9 +36,14 @@ const reviews = [
  * Get our page page title by the id and the query the .name selector
  * once you have the element you can add the product name to the span.
  */
-function setPageTitle() {
+function setPageTitle(title) {
   const pageTitle = document.getElementById('page-title');
-  pageTitle.querySelector('.name').innerHTML = name;
+  if(title) {
+    pageTitle.querySelector('.name').innerHTML = title;
+  }
+  else {
+    pageTitle.querySelector('.name').innerHTML = name;
+  }
 }
 
 /**

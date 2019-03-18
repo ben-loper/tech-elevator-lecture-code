@@ -16,32 +16,28 @@ function init() {
     { id: 8, task: 'Dinner', completed: false },
     { id: 9, task: 'Brush Teeth', completed: false },
     { id: 10, task: 'Go to bed', completed: false }
-  ]
+  ];
 }
 
 function addPageTitle() {
-  const heading = document.createElement('h1')
+  const heading = document.createElement('h1');
   heading.innerText = pageTitle;
   todoList.appendChild(heading);
 }
 
 function addTodos() {
   const ul = document.createElement('ul');
-  todos.forEach(todo => {
-    const li = document.createElement('li')
-    li.innerText = todo.task
-    ul.appendChild(li)
+  todos.forEach((todo) => {
+    const li = document.createElement('li');
+    li.innerText = todo.task;
+    const checkCircle = document.createElement('i');
+    checkCircle.setAttribute('class', 'far fa-check-circle');
+    li.appendChild(checkCircle);
+    ul.appendChild(li);
   });
   todoList.appendChild(ul);
 }
 
-// setup our page title and tasks
 init();
-// // add page title to the DOM
 addPageTitle();
-// // add the task to the DOM
-<<<<<<< HEAD
 addTodos();
-=======
-addTodos();
->>>>>>> fac7c34a634b58ca56b48d9d9244584b67a97472
