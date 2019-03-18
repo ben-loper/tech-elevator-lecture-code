@@ -55,6 +55,7 @@ function setPageDescription() {
  */
 function displayReviews() {
   const mainNode = document.getElementById('main');
+
   for(let i = 0; i < g_reviews.length; i++) {
     const reviewNode = createReviewNode(i);
     mainNode.insertAdjacentElement('beforeend', reviewNode);
@@ -96,36 +97,6 @@ function createRatingNode(starRating) {
   }
   return ratingNode;
 }
-
-/**
- * I will creating a new h4 element with the name of the reviewer and append it to
- * the parent element that is passed to me.
- *
- * @param {HTMLElement} el: The element to append the reviewer to
- * @param {string} name The name of the reviewer
- */
-function addReviewer(parent, name) {}
-
-/**
- * I will add the rating div along with a star image for the number of ratings 1-5
- * @param {HTMLElement} parent
- * @param {Number} numberOfStars
- */
-function addRating(parent, numberOfStars) {}
-
-/**
- * I will add an h3 element along with the review title
- * @param {HTMLElement} parent
- * @param {string} title
- */
-function addTitle(parent, title) {}
-
-/**
- * I will add the product review
- * @param {HTMLElement} parent
- * @param {string} review
- */
-function addReview(parent, review) {}
 
 // set the product reviews page title
 setPageTitle();
