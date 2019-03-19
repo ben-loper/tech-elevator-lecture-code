@@ -17,14 +17,14 @@ let reviews = [
  */
 function setPageTitle() {
   const pageTitle = document.getElementById('page-title');
-  pageTitle.querySelector('.name').innerHTML = name;
+  pageTitle.querySelector('.name').innerText = name;
 }
 
 /**
  * Add our product description to the page.
  */
 function setPageDescription() {
-  document.querySelector('.description').innerHTML = description;
+  document.querySelector('.description').innerText = description;
 }
 
 /**
@@ -66,6 +66,37 @@ setPageTitle();
 setPageDescription();
 // display all of the product reviews on our page
 displayReviews();
+
+document.addEventListener("DOMContentLoaded", (event) => {
+
+  // find the description node
+  const descNode = document.querySelector('.description');
+
+  // add click event handler for descNode
+  descNode.addEventListener('click', (event) => {
+    toggleDescriptionEdit(event.currentTarget);
+  });
+
+  const descEditNode = document.getElementById('inputDesc');
+  descEditNode.addEventListener('mouseout', (event) => {
+    exitDescriptionEdit(event.currentTarget, false);
+  });
+  descEditNode.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter') {
+      exitDescriptionEdit(event.currentTarget, true);
+    }
+  });
+
+  const showFormNode = document.getElementById('btnToggleForm');
+  showFormNode.addEventListener('click', showHideForm);
+
+  const saveFormNode = document.getElementById('btnSaveReview');
+  saveFormNode.addEventListener('click', (event)=>{
+    event.preventDefault();
+    saveReview();
+  });
+
+});
 
 /**
  * Take an event on the description and swap out the description for a text box.
@@ -130,4 +161,26 @@ function resetFormValues() {
 /**
  * I will save the review that was added using the add review from
  */
-function saveReview() {}
+function saveReview() {
+  // find all class review element and detach them from the dom
+  const reviewNodes = document.querySelectorAll('.review');
+  const mainNode = document.getElementById('main');
+  reviewNodes.forEach((element)=>{
+    mainNode.removeChild(element);
+  });
+
+  const nameNode = document.getElementById('name');
+  const titleNode = document.getElementById('title');
+  const ratingNode = document.getElementById('rating');
+  const reviewNode = document.getElementById('review');
+
+  const reviewData = {};
+  reviewData.reviewer = nameNode.value;
+  reviewData.title = titleNode.value;
+  reviewData.rating = ratingNode.value;
+  reviewData.review = reviewNode.value;
+  reviews.push(reviewData);
+
+  displayReviews();
+  showHideForm();
+}
