@@ -39,7 +39,7 @@
         <div class="review" v-for="review in reviews" v-bind:key="review.id">
             <h4>{{ review.reviewer }}</h4>
             <div class="rating">
-                <img src="../assets/star.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar" v-for="n in review.rating" />
+                <img src="../assets/star.png" :key="n.id" v-bind:title="review.rating + ' Star Review'" class="ratingStar" v-for="n in review.rating" />
             </div>
             <h3>{{ review.title }}</h3>
 
