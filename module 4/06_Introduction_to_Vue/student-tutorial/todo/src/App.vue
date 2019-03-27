@@ -1,16 +1,17 @@
 <template>
   <div id="todo-app">
-    <todo-list></todo-list>
+    <product-review msg="Howdy Y'all" />
+    <product-review msg="!Howdy Y'all" />
   </div>
 </template>
 
 <script>
-
+import ProductReview from './components/ProductReview.vue'
 
 export default {
   name: 'app',
   components: {
-    
+    ProductReview
   }
 }
 </script>
