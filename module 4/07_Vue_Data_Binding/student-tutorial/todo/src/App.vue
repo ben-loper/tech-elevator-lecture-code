@@ -1,25 +1,16 @@
 <template>
   <div id="todo-app">
-    <product-review msg="Howdy Y'all" />
-    <product-review msg="!Howdy Y'all" />
+    <todo-list></todo-list>
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
 import TodoList from './components/TodoList';
-=======
-import ProductReview from './components/ProductReview.vue'
->>>>>>> 9581c93d5e30ab1ae5cd8861055cf634d2b825d9
 
 export default {
   name: 'app',
   components: {
-<<<<<<< HEAD
     TodoList
-=======
-    ProductReview
->>>>>>> 9581c93d5e30ab1ae5cd8861055cf634d2b825d9
   }
 }
 </script>
